@@ -22,7 +22,7 @@ var (
 func main() {
 	args := os.Args
 	if len(args) != 2 {
-		log.Fatal("only two argument is required: go run main.go <mfa>")
+		log.Fatal("mfa code is not set")
 	}
 
 	err := os.Setenv("AWS_PROFILE", Profile)
