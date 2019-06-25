@@ -29,6 +29,21 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to set aws profile env: %s", err)
 	}
+	// unset old env variables.
+	err = os.Unsetenv("AWS_SECRET_ACCESS_KEY")
+	if err != nil {
+		log.Fatalf("failed unset env: %s", err)
+	}
+
+	err = os.Unsetenv("AWS_ACCESS_KEY_ID")
+	if err != nil {
+		log.Fatalf("failed unset env: %s", err)
+	}
+
+	err = os.Unsetenv("AWS_SESSION_TOKEN")
+	if err != nil {
+		log.Fatalf("failed unset env: %s", err)
+	}
 
 	sess, err := session.NewSession(&aws.Config{
 		Region: aws.String(endpoints.EuWest2RegionID),
